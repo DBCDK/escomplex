@@ -28,6 +28,11 @@ module.exports.analyse = function analyse (source, options, parsing) {
     // will be missing line information.
     parserOptions.loc = true;
 
+    if (options.future) {
+        parserOptions.sourceType = 'module';
+        parserOptions.ecmaVersion = 7;
+    }
+
     if (Array.isArray(source)) {
         ast = parseProject(source, parser, parserOptions, options);
     } else {
